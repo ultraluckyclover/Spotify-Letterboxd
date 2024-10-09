@@ -10,9 +10,15 @@ function App() {
   return (
     <div className="app">
 
+        <script>
+          alert('Hello from the front end.')
+        </script>
+
         <Header />
         <Hero/>
         <Recommended />
+
+        
 
       
         
