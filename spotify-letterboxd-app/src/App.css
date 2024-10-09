@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+    --primary-color: #c0bccb;
+    --secondary-color:#1db954;
+    --bg-color: #020108;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+}
+

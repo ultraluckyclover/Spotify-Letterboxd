@@ -1,0 +1,273 @@
+
+
+* {
+    font-family: "DM Sans", sans-serif;
+}
+
+
+
+.heroLeft a {
+    text-decoration: none;
+    color: var(--primary-color);
+    background-color: #1db954;
+    padding: 10px;
+    border-radius: 80px;
+    color: white;
+    
+}
+
+.heroLeft a:hover {
+    opacity: 70%;
+}
+
+
+
+
+
+/* FOR COMPUTERS */
+
+@media screen and (min-width:415px) {
+
+    .hero {
+        background-color: var(--bg-color);
+        color: var(--primary-color);
+        /* display: grid; */
+        width: 100%;
+        /* margin: 3rem auto; */
+        height: 100%;
+
+        
+
+
+        /* border: 2px solid green; */
+
+    }
+
+    .heroContainer {
+        display: grid;
+        position: relative;
+        grid-template-columns: (2,1fr);
+        gap: 2rem; 
+        padding-left: 3vw;
+        
+    }
+
+
+
+    .heroLeft {
+        padding-right: 5em;
+        
+
+        position: relative; 
+        z-index: 10;
+
+    }
+
+    .heroLeft h1 {
+        font-family: 'Seagull-Black';
+        letter-spacing: 4px;
+        font-size: 5vw;
+        line-height: 1.5;
+        padding-top: 4vh;
+    }
+
+
+
+    .heroLeft .phrase {
+        width: 25vw;
+        margin-bottom: 20px;
+        padding-top: .3vh;
+        padding-top: 10vh;
+        font-size: 3vw;
+    }
+
+    .heroLeft a {
+        padding: 15px;
+        font-size:2vw;
+    }
+
+    .heroLeft .button {
+        padding-top: 10vh;
+    }
+
+
+
+    .heroRight {
+        
+        
+        overflow: hidden;
+
+        padding-top: 100px;
+        
+        z-index: 0;
+        width: 100%;
+        margin: 0 0 0 auto;
+        align-items: right;
+        text-align: right;
+        position: absolute;
+        right: 0;
+    }
+
+    .heroRight img {
+        width: 70%;
+
+        opacity: 80%;
+        /* margin-top: 100px; */
+    }
+
+
+
+}
+
+
+
+/* @media screen and (max-width: 700px){
+    .hero {
+        width: 90%;
+    }
+
+    .heroRight {
+        opacity: 5%;
+    }
+} */
+
+/* @media screen and (min-width: 1123px){
+    .heroLeft img {
+        width: 100%;
+        height: auto;
+    }
+} */
+
+
+/* 
+@media screen and (max-width:867px){
+    .heroContainer {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+   
+    .heroLeft {
+        padding-right: 2rem;
+    }
+
+    .heroLeft a {
+        align-self: center;
+    }
+
+    .heroRight {
+        position: absolute;
+        z-index: 0;
+        background-size: 100%;
+    }
+
+    .heroLeft h1 {
+        transition: line-height 500ms;
+        line-height: 1.3;
+        font-size: 3em;
+        position: relative ;
+        z-index: infinite;
+    
+    }
+    
+    .heroRight img {
+        isolation: isolate;
+        z-index: 0;
+    }
+} */
+
+
+/* @media screen and (max-width:1130px) {
+
+    .heroLeft h1 {
+        z-index: 100;
+
+    }
+
+    .heroRight img {
+        margin-top: 0px;
+        
+        opacity: 50%;
+        transition: opacity 500ms;
+        z-index: 0;
+
+}
+} */
+
+
+/* FOR PHONES */ 
+
+
+@media screen and (max-width: 414px){
+
+    .hero {
+        height: 100vh;
+        width: auto;
+        margin: 0;
+
+        
+        display: flex;
+        flex-direction: column;
+
+        left: 0;
+        top: 0;
+        order: 2;
+
+        
+    }
+
+    .heroContainer{
+        flex: 1;
+    }
+
+    .heroRight {
+        position: absolute;
+        top: 0;
+    }
+
+    .heroRight img {
+        width: 100%;
+
+        opacity: 50%;
+        padding-top: 0px !important;
+
+
+    }
+
+    .heroLeft {
+        height: 100vh;
+        width: auto;
+        text-align: center;
+    }
+
+    .heroLeft h1 {
+        font-size: 12wmin;
+        
+        padding-top: calc(100vh - 100vw);
+        line-height: 1.8;
+        position: relative;
+        z-index: 100;
+        margin: 0 2vw 0 2vw;
+        
+    }
+
+    .heroLeft p {
+        margin-top: 2em;
+        margin-bottom: 3em;
+        z-index: 1000;
+        position: relative;
+        
+    }
+
+    .heroLeft a {
+
+        margin-top: 5vh; 
+        position: relative;
+        z-index: 100;
+
+
+    }
+
+
+}
+
+
