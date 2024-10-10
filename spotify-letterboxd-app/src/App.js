@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header'
-import Hero from './components/Hero/Hero'
-import Recommended from './components/Recommended/Recommended'
+import Header from './components/Header/Header.js'
+import Hero from './components/Hero/Hero.js'
+import Recommended from './components/Recommended/Recommended.js'
 
 
 

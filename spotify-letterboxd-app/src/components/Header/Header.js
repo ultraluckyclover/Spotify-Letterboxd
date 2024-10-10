@@ -1,6 +1,8 @@
 import React from 'react';
 import './Header.css';
 import SearchIcon from '@mui/icons-material/Search';
+//import { loginUrl } from '../../server/server.js';
+
 //import styles from './style'
 // import SearchIcon from './images/search-icon.png'
 //import SearchIcon from '@mui/icons-material/Search';
@@ -33,7 +35,7 @@ const Header = () => (
         </div>
 
         <div class = 'headerSign'>
-            <a href = 'google.com'> <strong> Sign in</strong></a>
+            <a href = 'google.com'> <strong>Sign in</strong></a>
         </div>
 
     </header>

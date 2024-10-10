@@ -4,7 +4,6 @@
 // const path = require('path');
 // require('dotenv').config({path: '.env'});
 
-
 import express from 'express';
 import spotifyWebApi from 'spotify-web-api-node';
 import path from 'path';
@@ -20,6 +19,8 @@ const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const redirect_uri = process.env.REDIRECT_URI;
 
+
+// Set up server
 const app = express();
 
 //testing
@@ -27,11 +28,7 @@ app.listen(port, () => {
     console.log(`Server is listening on port ${port}!!!`)
 });
 
-//console.log(`client id: ${client_id}`);
-
-
 //permissions
-
 const scopes = [
     'user-top-read', // ---> top artists
     'user-library-read',
@@ -42,12 +39,12 @@ const scopes = [
     'user-library-modify' // ---> add albums to their library
 ]
 
-
-// Set up server
-
-
 // Authentication
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
+
+export const loginUrl = `${authEndpoint}?client_id=${client_id}&redirect_uri=${redirect_uri}
+&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`
+
 
 
 
