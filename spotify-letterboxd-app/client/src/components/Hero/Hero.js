@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState,useRef, useEffect} from 'react'
 //import Image from 'next/image';
 
 
@@ -7,20 +7,22 @@ import heroImage from '../../images/hero-image-2.png'
 import '../../fonts/gill-sans-mt-pro-cyrillic-medium.otf'
 
 
-window.onload = function () {
+// window.onload = function () {
 
-  console.log('ONLOAD')
+//   console.log('ONLOAD')
 
-  var heightImg = (document.getElementsByClassName('heroImg')[0].width);
-  console.log(heightImg);
-
-  document.getElementsByClassName('hero')[0].style.height = heightImg + 'px';
-
-
-
-};
+//   var heightImg = (document.getElementsByClassName('heroImg')[0].width);
+//   console.log(heightImg);
+//   document.getElementsByClassName('hero')[0].style.height = heightImg + 'px';
+// };
 
 const Hero = () => {
+
+
+
+
+
+
   return (
 
 

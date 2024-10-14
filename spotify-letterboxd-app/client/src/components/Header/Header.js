@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Header.css';
 import SearchIcon from '@mui/icons-material/Search';
-//import { loginUrl } from '../../server/server.js';
+import axios from 'axios'
+//import { loginUrl } from '../../../../server/server.js';
 
 //import styles from './style'
 // import SearchIcon from './images/search-icon.png'
@@ -20,7 +21,28 @@ import SearchIcon from '@mui/icons-material/Search';
         alt = 'skull with trumpet'/> */
 
 
-const Header = () => (
+const Header = () => {
+    // const backendUrl = 'http://localhost:8080'; // Use your backend server's URL
+    // const loginUrl = `${backendUrl}/auth/login`; 
+
+    // const [loginUrl, setLoginUrl] = useState('');
+
+    // useEffect(() => {
+    //     const fetchLoginUrl = async () => {
+    //         try {
+    //             const response = await fetch('/auth/login');
+    //             const data = await response.json();
+    //             setLoginUrl(data.loginUrl);
+    //         } catch (error) {
+    //             console.error('Error fetching login URL:', error);
+    //         }
+    //     };
+
+    //     fetchLoginUrl();
+    // }, []);
+
+
+    return(
     <div className = 'header'>
         
     <header>
@@ -35,12 +57,12 @@ const Header = () => (
         </div>
 
         <div class = 'headerSign'>
-            <a href = 'google.com'> <strong>Sign in</strong></a>
+            <a href = 'google.com' > <strong>Sign in</strong></a>
         </div>
 
     </header>
     </div>
-)
+)}
 
 
 export default Header
