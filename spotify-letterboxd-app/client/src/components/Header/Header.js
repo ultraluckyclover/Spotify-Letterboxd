@@ -2,7 +2,40 @@ import React, {useState, useEffect} from 'react';
 import './Header.css';
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios'
-//import { loginUrl } from '../../../../server/server.js';
+import Login from '../Login/Login.js'
+
+
+
+
+
+const Header = () => {
+    
+    return(
+    <div className = 'header'>
+        
+    <header>
+        <div className = 'headerLogo'>   
+            <h1 className = 'appName'> Spotify Letterboxd </h1>
+        </div> 
+
+        <div className = 'headerInput'>
+            <input className = 'searchBox ' type = 'text' placeholder = 'Search for an album, artist, or song' />
+            <SearchIcon className = 'headerInputBtn'
+            style = {{ fontSize: '45px'}}/>
+        </div>
+
+        <div className = 'headerSign'>
+            {/* <a href = 'google.com' > <strong>Sign in</strong></a> */}
+            <Login />
+        </div>
+
+    </header>
+    </div>
+)}
+
+
+export default Header
+
 
 //import styles from './style'
 // import SearchIcon from './images/search-icon.png'
@@ -21,48 +54,5 @@ import axios from 'axios'
         alt = 'skull with trumpet'/> */
 
 
-const Header = () => {
-    // const backendUrl = 'http://localhost:8080'; // Use your backend server's URL
-    // const loginUrl = `${backendUrl}/auth/login`; 
-
-    // const [loginUrl, setLoginUrl] = useState('');
-
-    // useEffect(() => {
-    //     const fetchLoginUrl = async () => {
-    //         try {
-    //             const response = await fetch('/auth/login');
-    //             const data = await response.json();
-    //             setLoginUrl(data.loginUrl);
-    //         } catch (error) {
-    //             console.error('Error fetching login URL:', error);
-    //         }
-    //     };
-
-    //     fetchLoginUrl();
-    // }, []);
 
 
-    return(
-    <div className = 'header'>
-        
-    <header>
-        <div className = 'headerLogo'>   
-            <h1 class = 'appName'> Spotify Letterboxd </h1>
-        </div> 
-
-        <div className = 'headerInput'>
-            <input class = 'searchBox ' type = 'text' placeholder = 'Search for an album, artist, or song' />
-            <SearchIcon className = 'headerInputBtn'
-            style = {{ fontSize: '45px'}}/>
-        </div>
-
-        <div class = 'headerSign'>
-            <a href = 'google.com' > <strong>Sign in</strong></a>
-        </div>
-
-    </header>
-    </div>
-)}
-
-
-export default Header

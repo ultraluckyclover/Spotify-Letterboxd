@@ -8,23 +8,21 @@ import Header from './components/Header/Header.js'
 import Hero from './components/Hero/Hero.js'
 import Recommended from './components/Recommended/Recommended.js'
 
+//import { loginUrl } from '../../../../server/server.js';
 
-const App = () => {
+
+// const code = new URLSearchParams(window.location.search).get('code')
+
+
+function App()  {
 
   return(
 
   <div className="app">
-
-
-
-
-
-
     <Header/>
     <Hero/>
     <Recommended />
-
-    
+ 
     {/* Popular Albums */}
   </div>
   )
