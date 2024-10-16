@@ -9,6 +9,8 @@ import Login from '../Login/Login.js'
 
 
 const Header = () => {
+
+    console.log('in header');
     
     return(
     <div className = 'header'>

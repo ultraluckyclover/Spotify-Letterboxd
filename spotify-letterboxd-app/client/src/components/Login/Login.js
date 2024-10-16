@@ -4,6 +4,8 @@ const LOGIN_URI = 'http://localhost:8080/auth/login'
 
 
 function Login() {
+
+    console.log("in Login")
     return (
         <div className="App">
             <header className="App-header">
