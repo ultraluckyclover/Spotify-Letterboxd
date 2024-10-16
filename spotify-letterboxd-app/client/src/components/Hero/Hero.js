@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {useState,useRef, useEffect} from 'react'
+=======
+import React from 'react'
+>>>>>>> 62cbf2a4 (Fixed auth)
 //import Image from 'next/image';
 
 
@@ -7,12 +11,17 @@ import heroImage from '../../images/hero-image-2.png'
 import '../../fonts/gill-sans-mt-pro-cyrillic-medium.otf'
 
 
+<<<<<<< HEAD
 // window.onload = function () {
+=======
+// window.onload =  () => {
+>>>>>>> 62cbf2a4 (Fixed auth)
 
 //   console.log('ONLOAD')
 
 //   var heightImg = (document.getElementsByClassName('heroImg')[0].width);
 //   console.log(heightImg);
+<<<<<<< HEAD
 //   document.getElementsByClassName('hero')[0].style.height = heightImg + 'px';
 // };
 
@@ -23,6 +32,14 @@ const Hero = () => {
 
 
 
+=======
+
+//   document.getElementsByClassName('hero')[0].style.height = heightImg + 'px';
+
+// };
+
+const Hero = () => {
+>>>>>>> 62cbf2a4 (Fixed auth)
   return (
 
 

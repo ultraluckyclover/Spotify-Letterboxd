@@ -82,7 +82,11 @@ header {
     height: 80%;
 } */
 
+<<<<<<< HEAD
 .headerSign a {
+=======
+.headerSign button, a {
+>>>>>>> 62cbf2a4 (Fixed auth)
     /* display: block; */
     text-decoration: none;
     color: var(--primary-color);

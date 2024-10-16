@@ -10,5 +10,8 @@ const reportWebVitals = onPerfEntry => {
   }
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 62cbf2a4 (Fixed auth)
 export default reportWebVitals;

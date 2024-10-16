@@ -5,15 +5,22 @@
   "type": "module",
   "dependencies": {
     "concurrently": "9.0.1",
+<<<<<<< HEAD
     "cors": "^2.8.5",
     "express": "^4.21.1"
+=======
+    "nodemon": "^3.1.7"
+>>>>>>> 62cbf2a4 (Fixed auth)
   },
   "scripts": {
     "client": "npm run start --prefix client",
     "server": "npm run server --prefix server",
     "dev": "concurrently \"npm run server\" \"npm run client\""
+<<<<<<< HEAD
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
+=======
+>>>>>>> 62cbf2a4 (Fixed auth)
   }
 }

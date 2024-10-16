@@ -10,15 +10,22 @@
     "dependencies": {
         "axios": "^1.7.7",
         "bootstrap": "^5.3.3",
+<<<<<<< HEAD
         "cookie-parser": "^1.4.7",
         "cors": "^2.8.5",
+=======
+>>>>>>> 62cbf2a4 (Fixed auth)
         "dotenv": "^16.4.5",
         "express": "^4.21.1",
         "mongoose": "^8.7.1",
         "spotify-web-api-node": "^5.0.2"
     },
     "devDependencies": {
+<<<<<<< HEAD
         "nodemon": "^3.1.7",
         "request": "^2.88.2"
+=======
+        "nodemon": "^3.1.7"
+>>>>>>> 62cbf2a4 (Fixed auth)
     }
 }
