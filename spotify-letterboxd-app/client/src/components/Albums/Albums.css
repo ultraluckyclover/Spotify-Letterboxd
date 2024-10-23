@@ -1,0 +1,8 @@
+.albumList {
+    display: flex;
+    flex: 1;
+}
+
+Album {
+    width: 50px;
+}

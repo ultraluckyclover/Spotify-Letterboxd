@@ -1,0 +1,47 @@
+.navBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 85vh; /* Full viewport height */
+    width: 100px;
+  }
+  
+/* Container for the navDir */
+.navDir {
+display: flex;
+flex-direction: column;
+justify-content: space-evenly; /* Even spacing between items */
+height: 60vh; /* NavDir will take 60% of the viewport height */
+
+background-color: var(--secondary-color);
+color: var(--bg-color)
+}
+
+.navDir div {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  height: 100%
+}
+
+.navDir div:hover{
+    background-color: #1dd25c;
+    transition: background-color 200ms ease-in-out;
+}
+
+/* GitHub logo container */
+.github {
+margin-bottom: 20px; /* Space from the bottom */
+}
+
+.github img {
+width: 40px; /* Adjust logo size */
+height: auto;
+}
+
+a  {
+    align-items: center;
+    background-color: transparent;
+}
+

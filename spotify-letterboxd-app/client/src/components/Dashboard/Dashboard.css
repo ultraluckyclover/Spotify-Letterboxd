@@ -1,0 +1,12 @@
+.dashboard {
+    display: flex; /* Use flexbox for layout */
+    
+    height: 100vh;
+}
+
+.wrapper {
+    display: flex; /* Use flexbox for the wrapper to arrange items horizontally */
+    flex-direction: column; /* Allow wrapper to take up remaining space */
+    padding-left: 20px; /* Optional: padding between Nav and Recommended sections */
+    width: calc(100% - 100px);
+}
