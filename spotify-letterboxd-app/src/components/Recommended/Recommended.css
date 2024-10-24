@@ -1,0 +1,39 @@
+.recommended {
+    /* border: 2px solid orange; */
+   
+    z-index: 100;
+    position: relative;
+    padding-top: 5vh;
+    order:3;
+    
+}
+
+.recommended header {
+    z-index: 1000;
+    justify-content: center;
+
+    
+}
+
+.albumContainer {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:  3vh 5vw 0 5vw;
+}
+
+
+.album {
+    border: 1px solid var(--primary-color);
+    aspect-ratio: 1;
+    width: 18vw;
+    
+}
+
+@media screen and (max-width: 414px) {
+
+    .recommended {
+        display: none !important
+    }
+}
