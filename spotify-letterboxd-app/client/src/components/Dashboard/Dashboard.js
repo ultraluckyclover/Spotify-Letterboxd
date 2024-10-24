@@ -5,7 +5,7 @@ import Recommended from '../Recommended/Recommended.js';
 import { Albums } from '../Albums/Albums.js';
 import './Dashboard.css'
 import Hero from '../Hero/Hero.js'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { Error } from '../Error/Error.js';
 import { Profile } from '../Profile/Profile.js';
 import { Home } from '../Home/Home.js';
@@ -27,9 +27,9 @@ const Dashboard = () => {
         <Routes>
           <Route path = '/' element = { <Home />}/>
           <Route path = '/profile' element = { <Profile/> } />
-          <Route path = 'diary' element = { <Diary/> }/>
-          <Route path = 'reviews' element = { <Reviews/> }/>
-          <Route path = 'to-listen' element = { <ToListen /> } />
+          <Route path = '/diary' element = { <Diary/> }/>
+          <Route path = '/reviews' element = { <Reviews/> }/>
+          <Route path = '/to-listen' element = { <ToListen /> } />
           
           <Route path = '*' element = { <Error/> }/>
         </Routes>

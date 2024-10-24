@@ -1,3 +1,5 @@
+// https://github.com/bchiang7/spotify-profile/blob/main/client/src/utils/index.js
+
 export const getHashParams = () => {
     const hashParams = {};
   let e;

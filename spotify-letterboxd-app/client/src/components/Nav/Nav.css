@@ -10,19 +10,19 @@
 .navDir {
 display: flex;
 flex-direction: column;
-justify-content: space-evenly; /* Even spacing between items */
-height: 60vh; /* NavDir will take 60% of the viewport height */
+justify-content: space-between; /* Even spacing between items */
+height: 70vh; /* NavDir will take 60% of the viewport height */
 
 background-color: var(--secondary-color);
 color: var(--bg-color)
 }
 
-.navDir div {
+.navDir Link {
   display: flex;
   flex-direction: column; /* Align items vertically */
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
-  height: 100%
+  height: 100vh;
 }
 
 .navDir div:hover{

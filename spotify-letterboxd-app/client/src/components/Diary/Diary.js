@@ -3,6 +3,11 @@ import './Diary.css'
 
 export const Diary = () => {
   return (
-    <div>Diary</div>
+    <div>
+
+      <h1>
+        DIARY
+      </h1>
+    </div>
   )
 }

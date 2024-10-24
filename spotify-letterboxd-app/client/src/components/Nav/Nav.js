@@ -1,5 +1,6 @@
 import React from 'react'
 import './Nav.css'
+import { Link } from 'react-router-dom'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FaceIcon from '@mui/icons-material/Face';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
@@ -14,28 +15,42 @@ export const Nav = () => {
 
         <div className = 'navDir'>
             <div>
-                <FaceIcon  fontSize = 'large' />
-                <p>Friends</p>
+                <Link to ='/profile'>
+                    <FaceIcon  fontSize = 'large' />
+                    <p>Friends</p>
+                </Link>
             </div>
             <div>
-                <AutoStoriesIcon />
-                <p>Diary</p>
+                <Link to = '/diary'>
+                    <AutoStoriesIcon />
+                    <p>Diary</p>
+                </Link>
+                
             </div>
             <div>
-                <ReviewsIcon />
-                <p>Reviews</p>
+                <Link to = '/reviews'>
+                    <ReviewsIcon />
+                    <p>Reviews</p>
+                </Link>
             </div>
             <div>
-                <MusicNoteIcon />
-                <p>2Listen2</p>
+                <Link to = '/to-listen'>
+                    <MusicNoteIcon />
+                    <p>2Listen2</p>
+                </Link>
             </div>
             <div>
-                <FormatListBulletedIcon />
-                <p>Lists</p>
+                <Link to = '/lists'>
+                    <FormatListBulletedIcon />
+                    <p>Lists</p>
+                </Link>
             </div>
+
             <div>
-                <FavoriteIcon />
-                <p>Likes</p>
+                <Link to = '/likes'>
+                    <FavoriteIcon />
+                    <p>Likes</p>
+                </Link>
             </div>
         </div>
         

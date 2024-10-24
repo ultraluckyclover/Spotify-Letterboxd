@@ -3,6 +3,7 @@ import './Header.css';
 import SearchIcon from '@mui/icons-material/Search';
 //import { loginUrl } from '../../server/server.js';
 import { logout } from '../../spotify/spotify.js';
+import {Link} from 'react-router-dom'
 
 //import styles from './style'
 // import SearchIcon from './images/search-icon.png'
@@ -35,6 +36,7 @@ const Header = ({ isAuthorized }) => (
 
         <div className = 'headerInput'>
             <input class = 'searchBox ' type = 'text' placeholder = 'Search for an album, artist, or song' />
+            
             <SearchIcon className = 'headerInputBtn'
             style = {{ fontSize: '45px'}}/>
         </div>
