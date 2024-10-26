@@ -13,6 +13,8 @@ import { logout } from './spotify/spotify.js'
 
 const App = () => {
 
+  console.log("entered App component");
+
   const [accessToken, setAccessToken] = useState('');
   const [isAuthorized, setIsAuthorized] = useState(false);
 
@@ -37,6 +39,8 @@ const App = () => {
         setIsAuthorized(false);
       }
     }
+
+    console.log("is Authorized is", isAuthorized);
 
     // if(!accessToken || accessToken === undefined){
     //   setIsAuthorized(false);

@@ -94,6 +94,7 @@ app.get('/callback', (req, res) => {
     }
 
     spotifyApi.authorizationCodeGrant(code).then(data => {
+        console.log("in Authorization code grant")
         
         // Extract tokens from the response
         const accessToken = data.body['access_token'];
@@ -137,6 +138,7 @@ app.get('/callback', (req, res) => {
 })
 
 app.get('/token' , (req,res) => {
+    console.log("in /token");
     const accessToken = spotifyApi.getAccessToken();
     console.log('accessToken', accessToken);
     if (accessToken) { 
