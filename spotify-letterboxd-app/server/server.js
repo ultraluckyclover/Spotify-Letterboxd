@@ -80,6 +80,8 @@ app.get('/login', (req,res) => {
 
 });
 
+// 
+
 app.get('/callback', (req, res) => {
     const error = req.query.error;
     const code = req.query.code;
@@ -136,12 +138,16 @@ app.get('/callback', (req, res) => {
 
 app.get('/token' , (req,res) => {
     const accessToken = spotifyApi.getAccessToken();
+    console.log('accessToken', accessToken);
     if (accessToken) { 
-        res.json( {access_token: access_token});
+        res.json( {access_token: accessToken});
     } else {
-        res.status(401).json( {error: "No access token."});
+        res.status(401).json( {error: "NO access token."});
     }
 });
+
+
+
 
 
 // app.get('/search', (req,res) => {

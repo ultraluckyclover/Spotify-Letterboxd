@@ -7,6 +7,7 @@ import { Profile } from './components/Profile/Profile.js';
 // import Recommended from './components/Recommended/Recommended.js'
 import { LandingPage } from './components/LandingPage/LandingPage.js';
 import {getHashParams} from './utils/index.js'
+import { logout } from './spotify/spotify.js'
 
 
 
@@ -36,21 +37,24 @@ const App = () => {
         setIsAuthorized(false);
       }
     }
+
+    // if(!accessToken || accessToken === undefined){
+    //   setIsAuthorized(false);
+    // }
+
+   
   }, []);
+
+  console.log("isAuthorized", isAuthorized)
+
+  
 
   return (
     <div className="app" id = 'root'>
 
-    
-
         
-        
-          <Header isAuthorized = {isAuthorized} />
-          {accessToken ? <Dashboard /> : <LandingPage /> }
-
-        
-
-      
+          <Header isAuthorized = {isAuthorized} />    
+          {(!isAuthorized || accessToken === undefined) ? <LandingPage /> : <Dashboard />  }
       {/* Popular Albums */}
     </div>
   );
