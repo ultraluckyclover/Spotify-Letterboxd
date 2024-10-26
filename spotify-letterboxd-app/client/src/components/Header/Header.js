@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Header.css';
 import SearchIcon from '@mui/icons-material/Search';
 //import { loginUrl } from '../../server/server.js';
 import { logout } from '../../spotify/spotify.js';
 import {Link} from 'react-router-dom'
-// import { getSearch } from '../../spotify/spotify.js';
 
 //import styles from './style'
 // import SearchIcon from './images/search-icon.png'
@@ -24,18 +23,7 @@ import {Link} from 'react-router-dom'
 
 const proxy = 'http://localhost:8080';
 const log = `${proxy}/login`
-const Header = ({ isAuthorized }) => {
-
-    console.log("isa+Authoirzed", isAuthorized);
-
-    
-    // const [searchQuery, setSearchQuery] = useState('');
-
-    // const handleSearchChange = (event) => {
-    //     setSearchQuery(event.target.value);
-    // }
-
-
+const Header = ({ isAuthorized }) => (
     
 <div className = 'header'>
     {isAuthorized && (
@@ -47,21 +35,13 @@ const Header = ({ isAuthorized }) => {
         </div> 
 
         <div className = 'headerInput'>
-            <input class = 'searchBox ' 
-                type = 'text' 
-                placeholder = 'Search for an album, artist, or song' 
-                value = 'searchQuery'
-                // onChange = {handleSearchChange} 
-                />
+            <input class = 'searchBox ' type = 'text' placeholder = 'Search for an album, artist, or song' />
             
-            <SearchIcon 
-                className = 'headerInputBtn'
-                style = {{ fontSize: '45px'}}
-                // onClick={() => getSearch(searchQuery)} 
-                />
+            <SearchIcon className = 'headerInputBtn'
+            style = {{ fontSize: '45px'}}/>
         </div>
 
-        <div className = 'headerSign'>
+        <div class = 'headerSign'>
             <button onClick = { logout }> <strong>Logout</strong></button>
         </div>
 
@@ -92,7 +72,7 @@ const Header = ({ isAuthorized }) => {
 
     </div>
     
-}
+)
 
 
 export default Header

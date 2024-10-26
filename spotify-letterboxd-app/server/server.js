@@ -94,8 +94,6 @@ app.get('/callback', (req, res) => {
     }
 
     spotifyApi.authorizationCodeGrant(code).then(data => {
-        console.log("in Authorization code grant")
-        
         // Extract tokens from the response
         const accessToken = data.body['access_token'];
         const refreshToken = data.body['refresh_token'];
@@ -110,7 +108,6 @@ app.get('/callback', (req, res) => {
     
         // Automatically refresh the access token before it expires
         setInterval(async () => {
-           
             try {
                 const refreshData = await spotifyApi.refreshAccessToken();
                 const accessTokenRefreshed = refreshData.body['access_token'];
@@ -134,35 +131,53 @@ app.get('/callback', (req, res) => {
         console.log("Error getting token:", error);
         res.send('Error getting token.');
     });
+    
+
+    // spotifyApi.authorizationCodeGrant(code).then(data => {
+    //     const accessToken = data.body['access_token'];
+    //     const refreshToken = data.body['refresh_token'];
+    //     const expiresIn = data.body['expires_in'];
+
+    //     spotifyApi.setAccessToken(accessToken);
+    //     spotifyApi.setRefreshToken(refreshToken);
+
+
+    //     console.log(accessToken, refreshToken);
+        
+    //     res.redirect(
+    //         `${frontend_uri}/#${querystring.stringify({
+    //           access_token,
+    //           refresh_token,
+    //         })}`,
+    //       );
+        
+    // }).catch(error => {
+    //     console.log("Error: ", error);
+    //     res.send('Error getting token.')
+    // })
 
 })
 
-app.get('/token' , (req,res) => {
-    console.log("in /token");
-    const accessToken = spotifyApi.getAccessToken();
-    console.log('accessToken', accessToken);
-    if (accessToken) { 
-        res.json( {access_token: accessToken});
-    } else {
-        res.status(401).json( {error: "NO access token."});
-    }
-});
+// app.get('/token' , (req,res) => {
+//     console.log("in /token");
+//     const accessToken = spotifyApi.getAccessToken();
+//     console.log('accessToken', accessToken);
+//     if (accessToken) { 
+//         res.json( {access_token: accessToken});
+//     } else {
+//         res.status(401).json( {error: "NO access token."});
+//     }
+// });
 
-
-
-
-
-// app.get('/search', (req,res) => {
-//     console.log("In here")
-//     const {q} = req.query;
-//     spotifyApi.searchTracks(q).then(searchData => {
-//         const trackUri = searchData.body.tracks.items(0).uri;
-//         console.log({uri: trackUri})
-//         res.send({uri: trackUri})
-//     }).catch(err=> {
-//         res.send(`Error searching ${err}`);
-//     });
-// })
+app.get('/search', (req,res) => {
+    const {q} = req.query;
+    spotifyApi.searchTracks(q).then(searchData => {
+        const trackUri = searchData.body.tracks.items(0).uri;
+        res.send({uri: trackUri})
+    }).catch(err=> {
+        res.send(`Error searching ${err}`);
+    });
+})
 
 // app.get('/play', (req, res) => {
 //     const {uri} = req.query;
