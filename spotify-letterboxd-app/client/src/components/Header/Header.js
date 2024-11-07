@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , { useState } from 'react';
 import './Header.css';
 import SearchIcon from '@mui/icons-material/Search';
 import { logout } from '../../auth.js';
@@ -9,6 +9,8 @@ import  useSpotifyApi  from '../../spotify/spotify.js'
 const proxy = 'http://localhost:8080';
 const log = `${proxy}/login`
 const Header = ({ isAuthorized }) =>  {
+
+    // Search function
 
     const [searchTerm, setSearchTerm] = useState('');
     const { getSearch } = useSpotifyApi(); 
@@ -26,8 +28,11 @@ const Header = ({ isAuthorized }) =>  {
         }
     };
 
+
     return (
         <div className = 'header'>
+
+            {/* Header for authorized user */}
             {isAuthorized && (
             <header>
                 <div className = 'headerLogo'>   
@@ -56,6 +61,7 @@ const Header = ({ isAuthorized }) =>  {
             
             )}
 
+            {/* Header for unauthorized user */}
             {!isAuthorized && (
 
                 <header>

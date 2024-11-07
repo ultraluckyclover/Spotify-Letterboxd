@@ -10,6 +10,8 @@ import path from 'path';
 import { config } from 'dotenv';
 import { fileURLToPath } from 'url';
 import querystring from 'querystring'
+import mongoose from 'mongoose'
+import { User } from "./models/User.model.js"
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,6 +23,20 @@ const port = 8080;
 
 // Set up server
 const app = express();
+
+
+mongoose.connect("mongodb://localhost/spotifydb")
+    .then(() => {
+        console.log("index.js is connected");
+    })
+    .catch(e => console.error(e));
+run()
+async function run() {
+    const user = new User({username: "testusername", location: "Tallahassee, FL"});
+    await user.save();
+    console.log(user)
+}
+
 
 //console.log(port)
 
