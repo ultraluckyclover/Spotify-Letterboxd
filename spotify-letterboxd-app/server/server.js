@@ -26,39 +26,13 @@ const app = express();
 
 
 
-//  MONGOOSE  -------------------------------------------------
+//  MONGOOSE  ---------------------------------------------------
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("index.js is connected");
     })
     .catch(e => console.error(e));
-
-//     run()
-// async function run() {
-
-//     try {
-//         const user = await User.findOne().byUsername('testusername');
-//         console.log(user)
-//         user.sayHi()
-//     } catch (e) {
-//         console.log(e.message)
-//     }
-// }
-
-// async function deleteAllUsers() {
-//     try {
-//         const result = await User.deleteMany({});
-//         console.log(`${result.deletedCount} users were deleted.`);
-//     } catch (error) {
-//         console.error("Error deleting users:", error);
-//     }
-// }
-// deleteAllUsers();
-
-
-
-
 
 // AUTHORIZATION ------------------------------------------------
 
@@ -74,6 +48,7 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 // Generate a random state string
+// https://developer.spotify.com/documentation/web-api/tutorials/code-flow
 var generateRandomString = function (length) {
     var text = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -104,47 +79,36 @@ app.get('/login', (req,res) => {
     ];
 
     // Authentication
-
     res.redirect(spotifyApi.createAuthorizeURL(scopes, state));
-
-    // const authEndpoint = 'https://accounts.spotify.com/authorize';
-
-    // const loginUrl = `${authEndpoint}?client_id=${client_id}&redirect_uri=${frontend_uri}
-    // &scope=${scopes.join('%20')}&response_type=code&show_dialog=true`
-
-    // console.log(loginUrl);
-
-    // res.redirect(loginUrl);
-
 });
 
 // callback after user connects their Spotify account
 
-app.get('/callback', (req, res) => {
-    const error = req.query.error;
-    const code = req.query.code;
-    const state = req.query.state;
+app.get('/callback', async (req, res) => {
+    const { error, code, state } = req.query;
 
-    if (error){
+    // Check for any error in the callback
+    if (error) {
         console.log("Error:", error);
-        res.send(`Error: ${error}`)
+        res.send(`Error: ${error}`);
         return;
     }
 
-    spotifyApi.authorizationCodeGrant(code).then(data => {
-        // Extract tokens from the response
+    try {
+        // Step 1: Get the authorization code grant
+        const data = await spotifyApi.authorizationCodeGrant(code);
         const accessToken = data.body['access_token'];
         const refreshToken = data.body['refresh_token'];
         const expiresIn = data.body['expires_in'];
-    
+
         // Set the access and refresh tokens on the Spotify API object
         spotifyApi.setAccessToken(accessToken);
         spotifyApi.setRefreshToken(refreshToken);
-    
+
         console.log("Access Token:", accessToken);
         console.log("Refresh Token:", refreshToken);
-    
-        // Automatically refresh the access token before it expires
+
+        //  Automatically refresh the access token before it expires
         setInterval(async () => {
             try {
                 const refreshData = await spotifyApi.refreshAccessToken();
@@ -153,42 +117,49 @@ app.get('/callback', (req, res) => {
                 // Set the new refreshed access token
                 spotifyApi.setAccessToken(accessTokenRefreshed);
                 console.log("Access Token refreshed:", accessTokenRefreshed);
-    
             } catch (error) {
                 console.error("Error refreshing access token:", error);
             }
         }, (expiresIn - 60) * 1000); // Refresh token 1 minute before it expires
-    
-        // Redirect to the frontend with the tokens
+
+        //  Get the user data from Spotify
+        const userData = await spotifyApi.getMe();
+
+        const { id: username, display_name, images } = userData.body;
+
+        //  Check if the user exists in the database
+        let user = await User.findOne({ username });
+
+        if (user) {
+            // If the user exists, update their profile with the new data
+            user.displayName = display_name;
+            user.imageUrl = images[0]?.url || '';
+            await user.save();
+            console.log('User updated:', user);
+
+        } else {
+            // If the user doesn't exist, create a new user document
+            const newUser = new User({
+                username,
+                displayName: display_name,
+                imageUrl: images[0]?.url || '',
+                createdAt: Date.now()
+            });
+            await newUser.save();
+            console.log('New user created:', newUser);
+        }
+
+        // Step 5: Redirect to the frontend with the tokens
         res.redirect(`${frontend_uri}/#${querystring.stringify({
             access_token: accessToken,
             refresh_token: refreshToken,
         })}`);
-    
-    }).catch(error => {
-        console.log("Error getting token:", error);
-        res.send('Error getting token.');
-    });
+    } catch (error) {
+        console.error('Error handling user data or authorization:', error);
+        res.send('Error handling user data or authorization.');
+    }
+});
 
-
-})
-
-
-// API REQUESTS ------------------------------------------------
-
-// app.get('/search', (req,res) => {
-//     const {q} = req.query;
-//     spotifyApi.searchTracks(q).then(searchData => {
-//         const trackUri = searchData.body.tracks.items(0).uri;
-//         res.send({uri: trackUri})
-//     }).catch(err=> {
-//         res.send(`Error searching ${err}`);
-//     });
-// })
-
-
-
-//testing
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}!!!`)
 });

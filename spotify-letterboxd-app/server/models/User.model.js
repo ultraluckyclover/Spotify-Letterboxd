@@ -24,16 +24,6 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required: true },
 
-    // clerkId: { 
-    //     type: String, 
-    //     required: true, 
-    //     unique: true },
-
-    // createdAt: { 
-    //     type: Date, 
-    //     immutable: true,
-    //     default: () => Date.now() },
-
     // favoriteAlbums: {
     //     type: [String],
     //     validate: [
