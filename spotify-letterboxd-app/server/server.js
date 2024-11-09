@@ -169,120 +169,26 @@ app.get('/callback', (req, res) => {
         console.log("Error getting token:", error);
         res.send('Error getting token.');
     });
-    
 
-    // spotifyApi.authorizationCodeGrant(code).then(data => {
-    //     const accessToken = data.body['access_token'];
-    //     const refreshToken = data.body['refresh_token'];
-    //     const expiresIn = data.body['expires_in'];
-
-    //     spotifyApi.setAccessToken(accessToken);
-    //     spotifyApi.setRefreshToken(refreshToken);
-
-
-    //     console.log(accessToken, refreshToken);
-        
-    //     res.redirect(
-    //         `${frontend_uri}/#${querystring.stringify({
-    //           access_token,
-    //           refresh_token,
-    //         })}`,
-    //       );
-        
-    // }).catch(error => {
-    //     console.log("Error: ", error);
-    //     res.send('Error getting token.')
-    // })
 
 })
 
-// app.get('/token' , (req,res) => {
-//     console.log("in /token");
-//     const accessToken = spotifyApi.getAccessToken();
-//     console.log('accessToken', accessToken);
-//     if (accessToken) { 
-//         res.json( {access_token: accessToken});
-//     } else {
-//         res.status(401).json( {error: "NO access token."});
-//     }
-// });
 
 // API REQUESTS ------------------------------------------------
 
-app.get('/search', (req,res) => {
-    const {q} = req.query;
-    spotifyApi.searchTracks(q).then(searchData => {
-        const trackUri = searchData.body.tracks.items(0).uri;
-        res.send({uri: trackUri})
-    }).catch(err=> {
-        res.send(`Error searching ${err}`);
-    });
-})
+// app.get('/search', (req,res) => {
+//     const {q} = req.query;
+//     spotifyApi.searchTracks(q).then(searchData => {
+//         const trackUri = searchData.body.tracks.items(0).uri;
+//         res.send({uri: trackUri})
+//     }).catch(err=> {
+//         res.send(`Error searching ${err}`);
+//     });
+// })
 
-// app.get('/play', (req, res) => {
-//     const {uri} = req.query;
-//     spotifyApi.play({uris: [uri]}).then( () => {
-//         res.send('playback started');
-
-//     }).catch(err => {
-//         res.send(`Error playing ${err}`);
-//     })
-    
-// });
 
 
 //testing
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}!!!`)
 });
-
-
-
-
-
-
-
-
-
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'src/app.js'));
-// });
-
-
-
-
-
-
-
-// app.get('/src/app.js', (req,res) => {
-//     console.log("Here")
-//     res.send("HI")
-// });
-
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'src/app.js'));
-
-// });
-
-
-// const server = app.listen(PORT, () => {
-//     console.log("Server is listening on port 8080")
-// })
-
-// const signals = ["SIGTERM", "SIGINT"];
-
-// function gracefulShutdown(signal){
-//     process.on(signal, async () => {
-//         server.close();
-//         //disconnect from db
-
-//         console.log("My work here is done.....")
-//         process.exit(0);
-//     })
-// }
-
-// for(let i = 0; i < signals.length; i++){
-//     gracefulShutdown(signals[i]);
-// };
-
-

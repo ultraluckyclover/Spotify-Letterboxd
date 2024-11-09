@@ -11,6 +11,6 @@ const artistSchema = new mongoose.Schema({
         required: true
     }
 
-})
+}, {timestamps: true})
 
 export const Artist = mongoose.model('Artist', artistSchema)
