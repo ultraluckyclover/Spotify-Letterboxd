@@ -14,31 +14,53 @@ import mongoose from 'mongoose'
 import { User } from "./models/User.model.js"
 
 
+// MIDDLEWARES ------------------------------------------------
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 config({ path: path.join(__dirname, '.env') }); // Make sure to use the correct directory for .env
 
 const port = 8080;
-
-// Set up server
 const app = express();
 
 
-mongoose.connect("mongodb://localhost/spotifydb")
+
+//  MONGOOSE  -------------------------------------------------
+
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("index.js is connected");
     })
     .catch(e => console.error(e));
-run()
-async function run() {
-    const user = new User({username: "testusername", location: "Tallahassee, FL"});
-    await user.save();
-    console.log(user)
-}
+
+//     run()
+// async function run() {
+
+//     try {
+//         const user = await User.findOne().byUsername('testusername');
+//         console.log(user)
+//         user.sayHi()
+//     } catch (e) {
+//         console.log(e.message)
+//     }
+// }
+
+// async function deleteAllUsers() {
+//     try {
+//         const result = await User.deleteMany({});
+//         console.log(`${result.deletedCount} users were deleted.`);
+//     } catch (error) {
+//         console.error("Error deleting users:", error);
+//     }
+// }
+// deleteAllUsers();
 
 
-//console.log(port)
+
+
+
+// AUTHORIZATION ------------------------------------------------
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
@@ -96,7 +118,7 @@ app.get('/login', (req,res) => {
 
 });
 
-// 
+// callback after user connects their Spotify account
 
 app.get('/callback', (req, res) => {
     const error = req.query.error;
@@ -135,7 +157,7 @@ app.get('/callback', (req, res) => {
             } catch (error) {
                 console.error("Error refreshing access token:", error);
             }
-        }, (expiresIn - 60) * 1000); // Refresh 1 minute before it expires
+        }, (expiresIn - 60) * 1000); // Refresh token 1 minute before it expires
     
         // Redirect to the frontend with the tokens
         res.redirect(`${frontend_uri}/#${querystring.stringify({
@@ -184,6 +206,8 @@ app.get('/callback', (req, res) => {
 //         res.status(401).json( {error: "NO access token."});
 //     }
 // });
+
+// API REQUESTS ------------------------------------------------
 
 app.get('/search', (req,res) => {
     const {q} = req.query;
