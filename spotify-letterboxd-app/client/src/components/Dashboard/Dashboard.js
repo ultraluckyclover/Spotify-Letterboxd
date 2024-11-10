@@ -33,9 +33,6 @@ const Dashboard = () => {
           
           <Route path = '*' element = { <Error/> }/>
         </Routes>
-      
-
-
 
       {/* <div className = 'wrapper'>
         <Albums />
